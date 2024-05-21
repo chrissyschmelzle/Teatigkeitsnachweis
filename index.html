@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tätigkeitsnachweis</title>
+    <link rel="stylesheet"  href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+</head>
+
+<body>
+    <h1>Tätgkeitsnachweis</h1>
+    
+    <!--
+        <div id="loginButton" style="position: absolute; top: 10px; right: 10px;">
+        <button onclick="openLoginPopup()">Anmelden</button>
+    </div>
+    <form id="loginForm" action="php/users.php" method="post">
+        E-Mail-Adresse:<br>
+        <input type="email" name="email"><br><br>
+        Passwort:<br>
+        <input type="password" name="password"><br><br>
+        <button type="submit">Einloggen</button>
+    </form>
+    <div id="loggedInMessage" style="display:none;">
+        Eingeloggt | <button onclick="logout()">Abmelden</button>
+    </div>
+    -->
+
+    <form>
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <label id="Weekday">Montag</label>
+                <label for="datum">Datum:  </label>
+                <select id="datum" name="datum">
+                    <!-- Optionen für das Datum -->
+                </select><br><br>
+
+                <label for="stunden">Stunden (max. 8):  </label>
+                <select id="stunden" name="stunden">
+                    <!-- Optionen für die Stunden -->
+                    <?php
+                    for ($i = 1; $i <= 8; $i++) {
+                        echo "<option value='$i'>$i</option>";
+                    }
+                    ?>
+                </select><br><br>
+
+                <button type="submit">Speichern</button><br><br>
+                <button type="button" onclick="edit()">Bearbeiten</button>
+            </div>
+
+        <div style="flex: 1;">
+            <label for="taetigkeiten">Tätigkeiten:</label><br>
+            <textarea id="taetigkeiten" name="taetigkeiten" rows="10" cols="50"></textarea>
+        </div>
+    </div>
+
+    </form>
+    <form>
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <label id="Weekday">Dienstag</label>
+                <label for="datum">Datum:  </label>
+                <select id="datum" name="datum">
+                    <!-- Optionen für das Datum -->
+                </select><br><br>
+
+                <label for="stunden">Stunden (max. 8):  </label>
+                <select id="stunden" name="stunden">
+                    <!-- Optionen für die Stunden -->
+                    <?php
+                    for ($i = 1; $i <= 8; $i++) {
+                        echo "<option value='$i'>$i</option>";
+                    }
+                    ?>
+                </select><br><br>
+
+                <button type="submit">Speichern</button><br><br>
+                <button type="button" onclick="edit()">Bearbeiten</button>
+            </div>
+
+        <div style="flex: 1;">
+            <label for="taetigkeiten">Tätigkeiten:</label><br>
+            <textarea id="taetigkeiten" name="taetigkeiten" rows="10" cols="50"></textarea>
+        </div>
+    </div>
+
+    </form>
+    <form>
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <label id="Weekday">Mittwoch</label>
+                <label for="datum">Datum:  </label>
+                <select id="datum" name="datum">
+                    <!-- Optionen für das Datum -->
+                </select><br><br>
+
+                <label for="stunden">Stunden (max. 8):  </label>
+                <select id="stunden" name="stunden">
+                    <!-- Optionen für die Stunden -->
+                    <?php
+                    for ($i = 1; $i <= 8; $i++) {
+                        echo "<option value='$i'>$i</option>";
+                    }
+                    ?>
+                </select><br><br>
+
+                <button type="submit">Speichern</button><br><br>
+                <button type="button" onclick="edit()">Bearbeiten</button>
+            </div>
+
+        <div style="flex: 1;">
+            <label for="taetigkeiten">Tätigkeiten:</label><br>
+            <textarea id="taetigkeiten" name="taetigkeiten" rows="10" cols="50"></textarea>
+        </div>
+    </div>
+
+    </form>
+    <form>
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <label id="Weekday">Donnerstag</label>
+                <label for="datum">Datum:  </label>
+                <select id="datum" name="datum">
+                    <!-- Optionen für das Datum -->
+                </select><br><br>
+
+                <label for="stunden">Stunden (max. 8):  </label>
+                <select id="stunden" name="stunden">
+                    <!-- Optionen für die Stunden -->
+                    <?php
+                    for ($i = 1; $i <= 8; $i++) {
+                        echo "<option value='$i'>$i</option>";
+                    }
+                    ?>
+                </select><br><br>
+
+                <button type="submit">Speichern</button><br><br>
+                <button type="button" onclick="edit()">Bearbeiten</button>
+            </div>
+
+        <div style="flex: 1;">
+            <label for="taetigkeiten">Tätigkeiten:</label><br>
+            <textarea id="taetigkeiten" name="taetigkeiten" rows="10" cols="50"></textarea>
+        </div>
+    </div>
+
+    </form>
+    <form>
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <label id="Weekday">Freitag</label>
+                <label for="datum">Datum:  </label>
+                <select id="datum" name="datum">
+                    <!-- Optionen für das Datum -->
+                </select><br><br>
+
+                <label for="stunden">Stunden (max. 8):  </label>
+                <select id="stunden" name="stunden">
+                    <!-- Optionen für die Stunden -->
+                    <?php
+                    for ($i = 1; $i <= 8; $i++) {
+                        echo "<option value='$i'>$i</option>";
+                    }
+                    ?>
+                </select><br><br>
+
+                <button type="submit">Speichern</button><br><br>
+                <button type="button" onclick="edit()">Bearbeiten</button>
+            </div>
+
+        <div style="flex: 1;">
+            <label for="taetigkeiten">Tätigkeiten:</label><br>
+            <textarea id="taetigkeiten" name="taetigkeiten" rows="10" cols="50"></textarea>
+        </div>
+    </div>
+
+    </form>
+
+</body>
+</html>

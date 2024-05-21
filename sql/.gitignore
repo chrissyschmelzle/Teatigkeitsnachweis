@@ -1,0 +1,4 @@
+# Ignore the following files, folders and patterns.
+.phpdoc
+docs
+config.php
