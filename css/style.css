@@ -9,3 +9,90 @@
     border: 1px solid #ccc;
     z-index: 1000;
 }
+
+#dayBlock{
+    display: flex;
+    border: 5px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#infobox{
+    border-style: double;
+    border: solid 3px black;
+}
+
+button {
+    display: inline-block;
+    background-color: #3498db;
+    border-radius: 25px 25px 0px 0px;
+    text-align: center;
+    border: 2px solid #000;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 10px 20px;
+}
+
+#Weekday {
+    text-decoration: underline;
+    text-decoration-color: #3498db;
+    text
+    text-decoration-style: 2px solid; /* Stil der Unterstreichung z.B. solid, dashed, dotted */
+}
+
+label[for="taetigkeiten"]{
+    text-decoration: underline;
+    text-decoration-color: #3498db;
+    text-decoration-style: solid;
+}
+#datetime{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+#logout {
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}
+#dateWeek{
+    position: center;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

@@ -85,4 +85,11 @@ class User {
         $this->stmt = null;
     }
 }
+
+// Starte die Sitzung
+session_start();
+
+// Beende die Sitzung und leite den Benutzer zur Startseite weiter
+session_destroy();
+exit;
 ?>
