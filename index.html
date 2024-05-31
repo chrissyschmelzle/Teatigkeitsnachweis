@@ -9,53 +9,36 @@
 </head>
 
 <body>
-
-    <button id="myBtn">Anmelden</button>
-
-
-    <div id="myModal" class="modal">
-
-  
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <form id="loginForm" action="php/users.php" method="post">
-                E-Mail-Adresse:<br>
-                <input type="email" name="email"><br><br>
-                Passwort:<br>
-                <input type="password" name="password"><br><br>
-                <button type="submit">Einloggen</button>
-            </form>
-            <p>Loggen sie sich ein!..</p>
+    <form class="user-form" action="php/users.php" method="post">
+        <label for="username">Benutzername:</label>
+        <input type="text" id="username" name="username">
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" name="password">  
+        <input type="submit" id="login" value="Anmelden">
+    </form>
+    <main id="page-wrapper" class="box-invisible">
+        <button type="button" id="logout">Abmelden</button>
+        <h1>Hallo!<br> dein Tätigkeitsnachweis</h1>
     </div>
-
-</div>
     <div id="datetime"></div>
-    <form  action="logout.php" method="post">
-        <button id="lockout" type="submit">Abmelden</button>
-    </form>
-    <h1>Tätigkeitsnachweis von User!</h1>
-    <p>Kalenderwoche 
-        <select id="calenderWeek"></select>
-        <p id="dateWeek">von    bis   </p>
-    </p>
-    
-    <!--
-        <div id="loginButton" style="position: absolute; top: 10px; right: 10px;">
-        <button onclick="openLoginPopup()">Anmelden</button>
-    </div>
-    <form id="loginForm" action="php/users.php" method="post">
-        E-Mail-Adresse:<br>
-        <input type="email" name="email"><br><br>
-        Passwort:<br>
-        <input type="password" name="password"><br><br>
-        <button type="submit">Einloggen</button>
-    </form>
-    <div id="loggedInMessage" style="display:none;">
-        Eingeloggt | <button onclick="logout()">Abmelden</button>
-    </div>
-    -->
+    <form  action="php/database.php" method="post">
 
+    </form>
     <form>
+        
+    
+    
+    <form action="php/worktime.php" method="post">
+        <p>Kalenderwoche 
+            <select id="calenderWeek"></select>
+            startdatum: <input type="date" name="startDatum"><br>
+            enddatum: <input type="date" name="endDatum"><br>
+        </p>
+    
+    </form>
+    
+
+    <form action="php/worktime.php" method="post">
         <div id="dayBlock" style="display: flex;">
             <div style="flex: 1;">
                 <label id="Weekday">Montag</label>
@@ -74,7 +57,7 @@
                     ?>
                 </select><br><br>
 
-                <button type="submit">Speichern</button><br><br>
+                <button type="button">Speichern</button><br><br>
                 <button type="button" onclick="edit()">Bearbeiten</button>
             </div>
 
@@ -83,7 +66,7 @@
                     <label for="taetigkeiten">Tätigkeiten:</label><br>
                     <textarea id="taetigkeiten" name="taetigkeiten" rows="10" cols="50"></textarea>
                 </div>
-                <input type="submit" value="Speichern">
+                <button type="button">Speichern</button>
                 <button type="button">gespeichertes</button>
             </form>
         </div>
@@ -225,6 +208,27 @@
     </div>
 
     </form>
+
+
+    </main>
+
+    <!--<button id="myBtn">Anmelden</button>
+
+
+    <div id="myModal" class="modal">
+
+  
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="loginForm" action="php/users.php" method="post">
+                E-Mail-Adresse:<br>
+                <input type="email" name="email"><br><br>
+                Passwort:<br>
+                <input type="password" name="password"><br><br>
+                <button id="login" type="submit" default>Einloggen</button>
+            </form>
+            <p>Loggen sie sich ein!..</p>
+    </div>-->
 
 </body>
 </html>

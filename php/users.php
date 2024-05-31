@@ -88,8 +88,33 @@ class User {
 
 // Starte die Sitzung
 session_start();
-
-// Beende die Sitzung und leite den Benutzer zur Startseite weiter
+if (!isset($_SESSION['validUser'])) {
+    require_once(" login.html"); 
+} elseif (isset($_POST['user'] AND isset($_POST['passwort']) {
+    // überprüfe Passwort
+    // Wenn passwort stimmt,
+    // setze $_SESSION['validUser'] = $_POST['user']
+    // gib das Formular für die
+    // Arbeitszeiterfassung aus
+} else {
+    // gib das Formular für die
+    // Arbeitszeiterfassung aus
+}
 session_destroy();
 exit;
+
+// Query to retrieve the name of the logged-in user from the database
+$sql = "SELECT vorname FROM benutzer WHERE benutzername='$benutzername'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Ergebniszeile abrufen
+    $row = $result->fetch_assoc();
+    $vorname = $row["vorname"];
+
+    // Create H1 heading with the user's first name
+    echo "<h1>Hallo, $vorname!</h1>";
+} else {
+    echo "Benutzer nicht gefunden.";
+}
 ?>
