@@ -1,21 +1,26 @@
 <?php
-require_once "./config.php";
-
-$userDb = new User();
+// require "./config.php";
+include_once "./error_handling.php";
 
 class User {
 
     private $connection;
-    private $dbhost = 'localhost';
     private $stmt;
+    private $dbHost;
+    private $dbUser;
+    private $dbPass;
+    private $dbName;
 
-    public function __construct($dbname="taetigkeitsnachweis") {
-        global $dbUser, $dbPass;
+    public function __construct($dbUser, $dbPass, $dbName, $dbHost="localhost") {
         try {
-            $this->connection = new PDO(
-                "mysql:host=$this->dbhost;dbname=$dbname;",
-                $dbUser,
-                $dbPass
+            $this->$dbHost = $dbHost;
+            $this->$dbUser = $dbUser;
+            $this->$dbPass = $dbPass;
+            $this->$dbName = $dbName;
+            $this->connection = new PDO (
+                "mysql:host=". $this->$dbHost . ";dbname=". $this->$dbName,
+                $this->$dbUser,
+                $this->$dbPass
             );
             $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (Exception $e) {
@@ -50,12 +55,12 @@ class User {
     }
     public function loginUser($email, $password) {
 
-        $sql = "SELECT * FROM taetigkeitsnachweis WHERE email='$email'";
+        $sql = "SELECT id, email, password_hash FROM user WHERE email=:email";
         $userData;
 
         try {
             $this->stmt = $this->connection->prepare($sql);
-            $this->stmt->execute(['email' => $email]);
+            $this->stmt->execute([':email' => $email]);
             // Get the user data from database with fetch.
             $userData = $this->stmt->fetch(PDO::FETCH_ASSOC);
         } catch(Exception $e) {
@@ -85,6 +90,14 @@ class User {
         $this->stmt = null;
     }
 }
+
+$userDb = new User('chrissy', 'cida0424', 'fi35_schmelzle_fpadw');
+//$userDb = new User('tm', 'test123', 'fi35_meyer_fpadw');
+echo json_encode($userDb->loginUser($_POST["username"], $_POST["password"]));
+
+
+die();
+
 
 // Starte die Sitzung
 session_start();

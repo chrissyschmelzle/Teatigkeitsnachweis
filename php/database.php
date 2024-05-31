@@ -1,4 +1,5 @@
 <?php
+require_once "error_handling.php";
 
 $servername = "localhost"; // Hostname der Datenbank
 $dbname = "fi35_schmelzle_fpadw"; // Name deiner Datenbank

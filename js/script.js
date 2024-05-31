@@ -9,13 +9,58 @@
 
         login_button.addEventListener('click', (ev) => {
             ev.preventDefault()
+            console.log(ev.target.id);
             toggleBoxes()
-            /* fetch() ... */
-        })
-        logout_button.addEventListener('click', (ev) => {
-            ev.preventDefault()
-            toggleBoxes()
-            /* fetch() ... */
+            const form_data = new FormData(user_form);
+                fetch('https://fi35.mshome.net/taetigkeitsnachweis/php/users.php', {
+                    method: 'POST',
+                    /*headers: {
+                        'Content-Type': 'application/json',
+                    },*/
+                    body: form_data 
+                })
+                .then(response => {
+                    if (response.ok) {
+                        // Erfolgreiche Antwort verarbeiten (z. B. JSON-Daten parsen)
+                        return response.json();
+                    } else {
+                        // Fehlerantwort verarbeiten (z. B. Fehlermeldung anzeigen)
+                        throw new Error(`Fehler beim Abrufen der Daten: ${response.status} ${response.statusText}`);
+                    }
+                })
+                .then(data => {
+                    console.log('Antwortdaten:', data);
+                })
+                .catch(error => {
+                    // Fehler behandeln (z. B. Netzwerkfehler)
+                    console.error('Fetch-Fehler:', error.message);
+                });
+    })
+    logout_button.addEventListener('click', (ev) => {
+         ev.preventDefault()
+        toggleBoxes()
+            fetch('https://fi35.mshome.net/taetigkeitsnachweis/php/logout.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Add any other headers you need (e.g., authorization token)
+                },
+                // Optional: Include a request body if data needs to be sent
+                // body: JSON.stringify({ key1: 'value1', key2: 'value2' }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Handle successful response (e.g., redirect to login page)
+                    window.location.href = 'login.html'; // Replace with your desired URL
+                } else {
+                    // Handle error response (e.g., show an error message)
+                    console.error('Error logging out:', response.status, response.statusText);
+                }
+            })
+            .catch(error => {
+                // Handle any exceptions (e.g., network errors)
+                console.error('Fetch error:', error.message);
+            });
         })
         
         function toggleBoxes() {
@@ -25,11 +70,9 @@
 
     
 
-/// Warte, bis das DOM vollständig geladen ist
-document.addEventListener('DOMContentLoaded', function() {
+
     const speichernButton = document.getElementById('speichern');
     const bearbeitenButton = document.getElementById('bearbeiten');
-});
 
     // Event-Handler für den Speichern-Button
 speichernButton.addEventListener('click', async function() {
