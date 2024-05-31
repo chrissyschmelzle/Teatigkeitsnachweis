@@ -1,4 +1,14 @@
 <?php
+$servername = "localhost";
+$username = "chrissy";
+$password = "cida0424";
+$dbname = "taetigkeitsnachweis";
+
+
+// Überprüfe die Verbindung
+if ($conn->connect_error) {
+    die("Verbindung fehlgeschlagen: " . $conn->connect_error);
+}
 class weektime {
 
     public function week($startDatum, $endDatum, $kalenderwoche) {
@@ -33,6 +43,26 @@ class weektime {
         } else {
             echo "Fehler beim Einfügen der Arbeitszeit: Formular nicht abgeschickt.";
         }
+    }
+}
+function stundenAuswahl($ausgewaehlteStunden) {
+    try {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $ausgewaehlteStunden = $_POST["stunden"];
+    
+            // Verbindung zur Datenbank herstellen (PDO verwenden)
+            // ...
+    
+            // SQL-Abfrage erstellen
+            $sql = "INSERT INTO worktime (hours) VALUES (:hours)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':hours', $ausgewaehlteStunden, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            echo "Arbeitsstunden erfolgreich gespeichert!";
+        }
+    } catch (PDOException $e) {
+        echo "Fehler bei der Verbindung zur Datenbank: " . $e->getMessage();
     }
 }
 ?>

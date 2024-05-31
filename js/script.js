@@ -74,6 +74,12 @@
     const speichernButton = document.getElementById('speichern');
     const bearbeitenButton = document.getElementById('bearbeiten');
 
+    document.querySelector('#stunden').addEventListener('change', function() {
+        const ausgewaehlteStunden = this.value;
+        console.log('Ausgewählte Stunden:', ausgewaehlteStunden);
+        // Weitere Aktionen hier (z. B. Formular senden)
+    });
+
     // Event-Handler für den Speichern-Button
 speichernButton.addEventListener('click', async function() {
     const selectedDatum = datumSelect.value;
