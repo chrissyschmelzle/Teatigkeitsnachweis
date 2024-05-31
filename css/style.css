@@ -1,3 +1,8 @@
+ 
+#countdown {
+    font-size: 24px;
+    font-weight: bold;
+}
 
 * {
     box-sizing: border-box;
@@ -69,7 +74,6 @@ button {
 #Weekday {
     text-decoration: underline;
     text-decoration-color: #3498db;
-    text
     text-decoration-style: 2px solid; /* Stil der Unterstreichung z.B. solid, dashed, dotted */
 }
 

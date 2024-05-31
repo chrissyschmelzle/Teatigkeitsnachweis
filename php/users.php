@@ -89,16 +89,14 @@ class User {
 // Starte die Sitzung
 session_start();
 if (!isset($_SESSION['validUser'])) {
-    require_once(" login.html"); 
-} elseif (isset($_POST['user'] AND isset($_POST['passwort']) {
-    // überprüfe Passwort
-    // Wenn passwort stimmt,
-    // setze $_SESSION['validUser'] = $_POST['user']
-    // gib das Formular für die
-    // Arbeitszeiterfassung aus
+    header("Location: home.php");
+    $_SESSION["success"] = "Sie sind jetzt angemeldet";
+}elseif (isset($_POST['user']) AND isset($_POST['passwort'])) {
+    $user = $POST['user'];
+    $password_hash = $POST['password_hash'];
 } else {
-    // gib das Formular für die
-    // Arbeitszeiterfassung aus
+    echo "falscher Benutzername oder Passwort";
+    require_once("login.html");
 }
 session_destroy();
 exit;

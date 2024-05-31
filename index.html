@@ -28,17 +28,17 @@
         
     
     
-    <form action="php/worktime.php" method="post">
-        <p>Kalenderwoche 
+    <form class="calender" action="php/time.php" method="post">
+        <p>Kalenderwoche: <span id="kalenderwoche"></span>
             <select id="calenderWeek"></select>
-            startdatum: <input type="date" name="startDatum"><br>
-            enddatum: <input type="date" name="endDatum"><br>
+            Startdatum: <input type="date" name="startDatum"><br>
+            Enddatum: <input type="date" name="endDatum"><br>
         </p>
-    
+        <div id="countdown"></div>
     </form>
     
 
-    <form action="php/worktime.php" method="post">
+    <form action="php/time.php" method="post">
         <div id="dayBlock" style="display: flex;">
             <div style="flex: 1;">
                 <label id="Weekday">Montag</label>
@@ -57,8 +57,8 @@
                     ?>
                 </select><br><br>
 
-                <button type="button">Speichern</button><br><br>
-                <button type="button" onclick="edit()">Bearbeiten</button>
+                <button id="speichern" type="button">Speichern</button><br><br>
+        
             </div>
 
             <form action="php/database.php" method="post">
@@ -66,8 +66,8 @@
                     <label for="taetigkeiten">Tätigkeiten:</label><br>
                     <textarea id="taetigkeiten" name="taetigkeiten" rows="10" cols="50"></textarea>
                 </div>
-                <button type="button">Speichern</button>
-                <button type="button">gespeichertes</button>
+                <button id="speichern" type="button">Speichern</button>
+                <button  id="gespeichertes" type="button">gespeichertes</button>
             </form>
         </div>
 

@@ -77,29 +77,37 @@ if ($database->updateData("Neue Anmerkungen")) {
     echo "Fehler beim Aktualisieren der Daten";
 }
 
-class DateTime{
-    
-    $date = new DateTime('now');
-    $locale = 'de_DE';
-    ini_set('date.timezone', 'Europe/Berlin');
 
-    $thisWeek = IntlCalendar::fromDateTime($date, $locale);
-    $thisWeek->set(IntlCalendar::FIELD_DAY_OF_WEEK, $thisWeek->getFirstDayOfWeek());
-    // $thisWeek now points to the first day of the week
-    $weekStart = $thisWeek->toDateTime();
+/*class DateTime {
+    public function getThisWeek() {
+        $date = new DateTime('now');
+        $date->setTimezone(new DateTimeZone('Europe/Berlin'));
 
-    $daysToAdvance = $thisWeek->getMaximum(IntlCalendar::FIELD_DAY_OF_WEEK) - 1;
-    // Maximum number of days in a week minus 1 gets you to the last day
-    $weekEnd = $weekStart->modify("+{$daysToAdvance} days");
+        $thisWeek = clone $date;
+        $thisWeek->setISODate($date->format('Y'), $date->format('W'));
+        $weekStart = $thisWeek->modify('this week');
 
-    $previousWeek = IntlCalendar::fromDateTime($date, $locale);
-    $previousWeek->add(IntlCalendar::FIELD_WEEK_OF_YEAR, -1);
-    $previousWeek = $previousWeek->toDateTime();
+        $weekEnd = clone $weekStart;
+        $weekEnd->modify('+6 days');
 
-    $nextWeek = IntlCalendar::fromDateTime($date, $locale);
-    $nextWeek->add(IntlCalendar::FIELD_WEEK_OF_YEAR, 1);
-    $nextWeek = $nextWeek->toDateTime();
+        $previousWeek = clone $weekStart;
+        $previousWeek->modify('-1 week');
+
+        $nextWeek = clone $weekStart;
+        $nextWeek->modify('+1 week');
+
+        return [
+            'start' => $weekStart,
+            'end' => $weekEnd,
+            'previous' => $previousWeek,
+            'next' => $nextWeek,
+        ];
+    }
 }
 
+$myDateTime = new MyDateTime();
+$weekInfo = $myDateTime->getThisWeek();
+}
+*/
 
 ?>
